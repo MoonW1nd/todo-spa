@@ -1,16 +1,19 @@
 .ListItem {
   margin-top: 10px;
   width: 50vw;
-  height: 40px;
-  box-shadow: 0 6px 15px rgba(36, 37, 38, 0.08);
+  height: 58px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  font: 18px arial, sans-serif;
   color: black;
 
   &-Text {
     display: inline-block;
+    margin-left: 50px;
+
     &_checked {
       text-decoration: line-through;
       color: lightgray;
@@ -18,7 +21,33 @@
   }
 
   &-Checkbox {
-    margin: 0 10px;
+    text-align: center;
+    width: 40px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+    }
+
+    &:checked:after {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+    }
+
+    &:focus {
+      box-shadow:  0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
   }
 
   &-Button {
