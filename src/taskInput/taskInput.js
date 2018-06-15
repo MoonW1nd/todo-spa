@@ -1,5 +1,5 @@
 import React from 'react';
-import './taskInput.scss'
+import './taskInput.scss';
 
 export default class TaskInput extends React.Component {
   state = {
@@ -13,8 +13,8 @@ export default class TaskInput extends React.Component {
       onChange = { this.handleSearchInput }
       placeholder = "Add Task"
       className = 'TaskInput'
-      onKeyDown = { (ev) => this.handleKeyPressed(ev) }
-    />
+      onKeyDown = { ev => this.handleKeyPressed(ev) }
+    />;
   }
 
   handleSearchInput = (ev) => {
@@ -24,7 +24,7 @@ export default class TaskInput extends React.Component {
   }
 
   handleKeyPressed = (ev) => {
-    let ENTER_KEY = 13;
+    const ENTER_KEY = 13;
 
     if (ev.keyCode !== ENTER_KEY) {
       return;
@@ -32,10 +32,14 @@ export default class TaskInput extends React.Component {
 
     ev.preventDefault();
 
-    var val = this.state.inputValue;
+    const val = this.state.inputValue;
 
     if (val) {
       this.props.addToDo(val);
+
+      this.setState({
+        inputValue: '',
+      });
     }
   }
 }
