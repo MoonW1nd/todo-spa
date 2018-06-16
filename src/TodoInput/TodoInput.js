@@ -1,7 +1,7 @@
 import React from 'react';
-import './taskInput.scss';
+import './TodoInput.scss';
 
-export default class TaskInput extends React.Component {
+export default class TodoInput extends React.Component {
   state = {
     inputValue: '',
   }
@@ -35,7 +35,7 @@ export default class TaskInput extends React.Component {
     const val = this.state.inputValue;
 
     if (val) {
-      this.props.addToDo(val);
+      this.props.addTodo(val);
 
       this.setState({
         inputValue: '',
