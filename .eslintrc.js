@@ -1,65 +1,8 @@
-const restrictedGlobals = [
-  'addEventListener',
-  'blur',
-  'close',
-  'closed',
-  'confirm',
-  'defaultStatus',
-  'defaultstatus',
-  'event',
-  'external',
-  'find',
-  'focus',
-  'frameElement',
-  'frames',
-  'history',
-  'innerHeight',
-  'innerWidth',
-  'length',
-  'location',
-  'locationbar',
-  'menubar',
-  'moveBy',
-  'moveTo',
-  'name',
-  'onblur',
-  'onerror',
-  'onfocus',
-  'onload',
-  'onresize',
-  'onunload',
-  'open',
-  'opener',
-  'opera',
-  'outerHeight',
-  'outerWidth',
-  'pageXOffset',
-  'pageYOffset',
-  'parent',
-  'print',
-  'removeEventListener',
-  'resizeBy',
-  'resizeTo',
-  'screen',
-  'screenLeft',
-  'screenTop',
-  'screenX',
-  'screenY',
-  'scroll',
-  'scrollbars',
-  'scrollBy',
-  'scrollTo',
-  'scrollX',
-  'scrollY',
-  'self',
-  'status',
-  'statusbar',
-  'stop',
-  'toolbar',
-  'top',
-];
-
 module.exports = {
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+  ],
   root: true,
 
   env: {
@@ -77,6 +20,7 @@ module.exports = {
       jsx: true,
       generators: true,
       experimentalObjectRestSpread: true,
+      module: true,
     },
   },
 
@@ -104,7 +48,7 @@ module.exports = {
 
     // enforce that class methods use "this"
     // http://eslint.org/docs/rules/class-methods-use-this
-    'class-methods-use-this': ['error', {
+    'class-methods-use-this': ['off', {
       exceptMethods: [],
     }],
 
@@ -148,7 +92,7 @@ module.exports = {
     // disallow else after a return in an if
     // https://eslint.org/docs/rules/no-else-return
     // TODO: semver-major, set allowElseIf to false
-    'no-else-return': ['error', { allowElseIf: true }],
+    "no-else-return": ["error", { "allowElseIf": true }],
 
     // disallow empty functions, except for standalone funcs/arrows
     // http://eslint.org/docs/rules/no-empty-function
@@ -260,17 +204,7 @@ module.exports = {
     // disallow parameter object manipulation except for specific exclusions
     // rule: http://eslint.org/docs/rules/no-param-reassign.html
     'no-param-reassign': ['error', {
-      props: true,
-      ignorePropertyModificationsFor: [
-        'acc', // for reduce accumulators
-        'e', // for e.returnvalue
-        'ctx', // for Koa routing
-        'req', // for Express requests
-        'request', // for Express requests
-        'res', // for Express responses
-        'response', // for Express responses
-        '$scope', // for Angular 1 scopes
-      ],
+      props: false
     }],
 
     // disallow usage of __proto__ property
@@ -1207,7 +1141,7 @@ module.exports = {
     'no-label-var': 'error',
 
     // disallow specific globals
-    'no-restricted-globals': ['error', 'isFinite', 'isNaN'].concat(restrictedGlobals),
+    'no-restricted-globals': ['error', 'isFinite', 'isNaN'],
 
     // disallow declaration of variables already declared in the outer scope
     'no-shadow': 'error',
@@ -1230,6 +1164,6 @@ module.exports = {
     'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
 
     // disallow use of variables before they are defined
-    'no-use-before-define': ['error', { functions: true, classes: true, variables: true }],
+    'no-use-before-define': ['error', { functions: false, classes: true, variables: true }],
   },
 };
