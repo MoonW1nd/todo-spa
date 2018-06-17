@@ -10,7 +10,7 @@ export default function TodoList(props) {
 
   return <ul className='List'>
     { todoCards }
-    <h2 style={resolveTodoCards.length === 0 ? { display: 'none' } : {} }>Resolve tasks</h2>
+    <h2 className='Header List-Header List-Header_resolved' style={resolveTodoCards.length === 0 ? { display: 'none' } : {} }>Resolve tasks</h2>
     { resolveTodoCards }
   </ul>;
 }

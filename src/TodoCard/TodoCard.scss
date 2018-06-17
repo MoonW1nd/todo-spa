@@ -1,6 +1,6 @@
 .ListItem {
   margin-top: 10px;
-  width: 50vw;
+  width: 100%;
   height: 58px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
   display: flex;
@@ -38,6 +38,7 @@
       content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
     }
 
+
     &:checked:after {
       position: absolute;
       left: 0;
@@ -50,8 +51,9 @@
     }
   }
 
-  &:hover {
-    .ListItem-Button {
+  &:hover,
+  &:focus {
+    .ListItem-DeleteButton {
       display: block;
     }
   }

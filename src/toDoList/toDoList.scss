@@ -2,4 +2,11 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+
+  &-Header {
+    &_resolved {
+      font: 24px arial, sans-serif;
+      color: #aba9a9;
+    }
+  }
 }

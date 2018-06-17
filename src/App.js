@@ -33,13 +33,13 @@ export default class App extends React.Component {
     todo.checked = !todo.checked;
     if (todo.checked) {
       this.setState({
-        tasks: this.state.tasks.filter(task => task.id !== todo.id).sort(sortById),
-        resolveTasks: this.state.resolveTasks.concat(todo).sort(sortById),
+        tasks: this.state.tasks.filter(task => task.id !== todo.id).sort(reverseSortById),
+        resolveTasks: [todo].concat(this.state.resolveTasks),
       });
     } else {
       this.setState({
-        resolveTasks: this.state.resolveTasks.filter(task => task.id !== todo.id).sort(sortById),
-        tasks: this.state.tasks.concat(todo).sort(sortById),
+        resolveTasks: this.state.resolveTasks.filter(task => task.id !== todo.id),
+        tasks: this.state.tasks.concat(todo).sort(reverseSortById),
       });
     }
   }
@@ -58,10 +58,6 @@ export default class App extends React.Component {
   }
 }
 
-function sortById(previousTask, currentTask) {
-  return previousTask.id - currentTask.id;
-}
-
 function reverseSortById(previousTask, currentTask) {
-  return previousTask.id - currentTask.id;
+  return currentTask.id - previousTask.id;
 }

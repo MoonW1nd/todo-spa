@@ -3,7 +3,7 @@ import is from 'prop-types';
 import './DeleteButton.scss';
 
 export default function Button({ task, removeTodo }) {
-  return <button className='ListItem-Button' onClick = { () => { removeTodo(task); } }></button>;
+  return <button className='ListItem-DeleteButton' onClick = { () => { removeTodo(task); } }></button>;
 }
 
 Button.propTypes = {

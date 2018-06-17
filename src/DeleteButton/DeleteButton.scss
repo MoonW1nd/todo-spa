@@ -1,4 +1,4 @@
-.ListItem-Button {
+.ListItem-DeleteButton {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -19,6 +19,7 @@
   -webkit-appearance: none;
   appearance: none;
   -webkit-font-smoothing: antialiased;
+  cursor: pointer;
 
   &:after {
     content: '×';
