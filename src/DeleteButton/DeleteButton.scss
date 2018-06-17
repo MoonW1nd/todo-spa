@@ -5,10 +5,8 @@
   bottom: 0;
   width: 40px;
   height: 40px;
-  margin: auto 0;
   font-size: 30px;
   color: #cc9a9a;
-  margin-bottom: 11px;
   display: none;
   transition: color 0.2s ease-out;
   margin: 0;
@@ -22,11 +20,11 @@
   appearance: none;
   -webkit-font-smoothing: antialiased;
 
-  &::after {
+  &:after {
     content: '×';
   }
 
   &:focus {
-    color: #E06C75;
+    color: #e06c75;
   }
 }
