@@ -1,63 +1,63 @@
 import React from 'react';
-import ToDoList from './toDoList/toDoList';
-import TaskInput from './taskInput/taskInput';
+import TodoList from './TodoList/TodoList';
+import TodoInput from './TodoInput/TodoInput';
 import './App.scss';
 
 export default class App extends React.Component {
   state = {
-    tasks: [{ checked: false, text: 'Create ToDo SPA' , id: 0}],
+    tasks: [{ checked: false, text: 'Create Todo SPA', id: 0 }],
     resolveTasks: [],
-    toDoCount: 1
+    todoCount: 1,
   };
 
-  addToDo = (text) => {
-    const toDo = {
+  addTodo = (text) => {
+    const todo = {
       checked: false,
       text,
-      id: this.state.toDoCount + 1
-    }
+      id: this.state.todoCount + 1,
+    };
     this.setState({
-      tasks: this.state.tasks.concat(toDo),
-      toDoCount: this.state.toDoCount + 1
-    })
+      tasks: this.state.tasks.concat(todo).sort(reverseSortById),
+      todoCount: this.state.todoCount + 1,
+    });
   }
 
-  removeToDo = (todo) => {
+  removeTodo = (todo) => {
     this.setState({
-      tasks: this.state.tasks.filter( task => task.id !== todo.id ),
-      resolveTasks: this.state.resolveTasks.filter( task => task.id !== todo.id )
-    })
+      tasks: this.state.tasks.filter(task => task.id !== todo.id),
+      resolveTasks: this.state.resolveTasks.filter(task => task.id !== todo.id),
+    });
   }
 
-  checkedToDo = (todo) => {
-    todo.checked = !todo.checked
+  checkedTodo = (todo) => {
+    todo.checked = !todo.checked;
     if (todo.checked) {
       this.setState({
-        tasks: this.state.tasks.filter( task => task.id !== todo.id ).sort(sortById),
-        resolveTasks: this.state.resolveTasks.concat(todo).sort(sortById)
-      })
+        tasks: this.state.tasks.filter(task => task.id !== todo.id).sort(reverseSortById),
+        resolveTasks: [todo].concat(this.state.resolveTasks),
+      });
     } else {
       this.setState({
-        resolveTasks: this.state.resolveTasks.filter( task => task.id !== todo.id ).sort(sortById),
-        tasks: this.state.tasks.concat(todo).sort(sortById)
-      })
+        resolveTasks: this.state.resolveTasks.filter(task => task.id !== todo.id),
+        tasks: this.state.tasks.concat(todo).sort(reverseSortById),
+      });
     }
   }
 
-  render () {
+  render() {
     return <section>
-      <TaskInput
-        addToDo = { this.addToDo }
+      <TodoInput
+        addTodo = { this.addTodo }
         />
-      <ToDoList
+      <TodoList
         { ...this.state }
-        removeToDo = { this.removeToDo }
-        checkedToDo = { this.checkedToDo }
+        removeTodo = { this.removeTodo }
+        checkedTodo = { this.checkedTodo }
       />
-    </section>
+    </section>;
   }
-};
+}
 
-function sortById(previousTask, currentTask) {
-  return previousTask.id - currentTask.id
+function reverseSortById(previousTask, currentTask) {
+  return currentTask.id - previousTask.id;
 }

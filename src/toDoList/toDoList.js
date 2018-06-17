@@ -1,20 +1,27 @@
 import React from 'react';
-import ToDoElement from '../toDoItem/toDoItem'
-import './toDoList.scss'
+import is from 'prop-types';
+import './TodoList.scss';
+import TodoCard from '../TodoCard/TodoCard';
 
-export default function ToDoList( props ) {
-  const { tasks, resolveTasks, removeToDo, resolveToDo } = props;
-  const ToDoElements = tasks.concat(resolveTasks).map(( task ) => {
-    return <li key = { task.id }>
-      <ToDoElement task = { task } {...props} />
-    </li>
-  })
+export default function TodoList(props) {
+  const { tasks, resolveTasks } = props;
+  const todoCards = tasks.map(task => getTodoCardsView(task, props));
+  const resolveTodoCards = resolveTasks.map(task => getTodoCardsView(task, props));
 
   return <ul className='List'>
-    { ToDoElements }
-  </ul>
+    { todoCards }
+    <h2 className='Header List-Header List-Header_resolved' style={resolveTodoCards.length === 0 ? { display: 'none' } : {} }>Resolve tasks</h2>
+    { resolveTodoCards }
+  </ul>;
 }
 
-function sortById(previousTask, currentTask) {
-  return previousTask.id - currentTask.id
+function getTodoCardsView(cardData, props) {
+  return <li key = { cardData.id }>
+    <TodoCard task = { cardData } {...props} />
+  </li>;
 }
+
+TodoList.propTypes = {
+  tasks: is.array,
+  resolveTasks: is.array,
+};
