@@ -1,0 +1,32 @@
+.ListItem-Button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  margin: auto 0;
+  font-size: 30px;
+  color: #cc9a9a;
+  margin-bottom: 11px;
+  display: none;
+  transition: color 0.2s ease-out;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: none;
+  vertical-align: baseline;
+  font-family: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+
+  &::after {
+    content: '×';
+  }
+
+  &:focus {
+    color: #E06C75;
+  }
+}
