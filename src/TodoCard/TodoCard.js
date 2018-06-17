@@ -1,4 +1,5 @@
 import React from 'react';
+import is from 'prop-types';
 import Button from '../DeleteButton/DeleteButton';
 import './TodoCard.scss';
 
@@ -8,7 +9,7 @@ export default function TodoCard(props) {
     <label>
       <input type="checkbox" className = 'ListItem-Checkbox'
         checked = { task.checked }
-        onClick = { () => checkedTodo(task) }
+        onChange = { () => checkedTodo(task) }
       />
       <p className = {task.checked ? 'ListItem-Text ListItem-Text_checked' : 'ListItem-Text'}>
         { task.text }
@@ -17,3 +18,8 @@ export default function TodoCard(props) {
     <Button className="ListItem-Button" {...props }/>
   </div>;
 }
+
+TodoCard.propTypes = {
+  task: is.object,
+  checkedTodo: is.func,
+};

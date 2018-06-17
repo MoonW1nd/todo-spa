@@ -1,4 +1,5 @@
 import React from 'react';
+import is from 'prop-types';
 import './TodoList.scss';
 import TodoCard from '../TodoCard/TodoCard';
 
@@ -19,3 +20,8 @@ function getTodoCardsView(cardData, props) {
     <TodoCard task = { cardData } {...props} />
   </li>;
 }
+
+TodoList.propTypes = {
+  tasks: is.array,
+  resolveTasks: is.array,
+};
